@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ganoderma Lucidum - El Hongo de la Inmortalidad</title>
+    
+    <!-- Vercel Analytics -->
+    <script defer src="https://cdn.vercel-insights.com/v1/script.js"></script>
+    
+    <!-- Vercel Speed Insights -->
+    <script>
+        window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    </script>
+    <script defer src="https://cdn.vercel-insights.com/v1/speed-insights/script.js"></script>
+    
+    <!-- Preconnect para optimización -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #8B4513;
+            --secondary-color: #F4A460;
+            --accent-color: #CD853F;
+            --text-dark: #2C1810;
+            --text-light: #FFF8DC;
+            --gradient-1: linear-gradient(135deg, #8B4513 0%, #CD853F 100%);
+            --gradient-2: linear-gradient(135deg, #F4A460 0%, #DEB887 100%);
+            --shadow: 0 10px 30px rgba(139, 69, 19, 0.2);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            /* Prevenir selección y copia de texto */
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            -webkit-touch-callout: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: var(--gradient-1);
+            overflow-x: hidden;
+            /* Deshabilitar arrastrar imágenes */
+            -webkit-user-drag: none;
+            -khtml-user-drag: none;
+            -moz-user-drag: none;
+            -o-user-drag: none;
+            user-drag: none;
+        }
+
+        /* Prevenir selección en imágenes */
+        img {
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            -webkit-user-drag: none;
+            -khtml-user-drag: none;
+            -moz-user-drag: none;
+            -o-user-drag: none;
+            user-drag: none;
+            pointer-events: none;
+        }
+
+        /* Permitir interacción solo en el botón de WhatsApp */
+        .whatsapp-btn {
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            pointer-events: all;
+        }
+
+        .container {
+            max-width: 100%;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Hero */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: var(--gradient-1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="75" cy="75" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="50" cy="10" r="0.5" fill="rgba(255,255,255,0.05)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 8vw, 4rem);
+            font-weight: 700;
+            color: var(--text-light);
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero .subtitle {
+            font-size: clamp(1.1rem, 4vw, 1.5rem);
+            color: var(--text-light);
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        /* Secciones */
+        .section {
+            padding: 4rem 0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+
+        .section:nth-child(even) {
+            background: var(--gradient-2);
+        }
+
+        .section:nth-child(odd) {
+            background: linear-gradient(135deg, #FFF8DC 0%, #F5DEB3 100%);
+        }
+
+        .section-content {
+            width: 100%;
+        }
+
+        .section h2 {
+            font-size: clamp(2rem, 6vw, 3rem);
+            font-weight: 600;
+            margin-bottom: 2rem;
+            text-align: center;
+            color: var(--text-dark);
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 1.5rem 0;
+            box-shadow: var(--shadow);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(139, 69, 19, 0.3);
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .benefit-card {
+            background: linear-gradient(135deg, #fff 0%, #f8f8f8 100%);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 15px 30px rgba(139, 69, 19, 0.2);
+        }
+
+        .benefit-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .image-placeholder {
+            width: 100%;
+            height: 250px;
+            background: var(--gradient-2);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 2rem 0;
+            color: var(--text-dark);
+            font-weight: 600;
+            border: 2px dashed var(--accent-color);
+        }
+
+        .scientific-source {
+            background: rgba(139, 69, 19, 0.1);
+            border-left: 4px solid var(--primary-color);
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 0 10px 10px 0;
+            font-size: 0.9rem;
+            font-style: italic;
+        }
+
+        .cta-section {
+            background: var(--gradient-1);
+            padding: 4rem 2rem;
+            text-align: center;
+            color: var(--text-light);
+        }
+
+        .whatsapp-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            background: #25D366;
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            box-shadow: 0 5px 20px rgba(37, 211, 102, 0.3);
+            transition: all 0.3s ease;
+            margin-top: 2rem;
+        }
+
+        .whatsapp-btn:hover {
+            background: #128C7E;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4);
+        }
+
+        /* Animaciones */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive para orientación */
+        @media screen and (orientation: landscape) and (max-height: 500px) {
+            .hero {
+                min-height: auto;
+                padding: 2rem 0;
+            }
+            
+            .section {
+                min-height: auto;
+                padding: 2rem 0;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero img {
+                width: 150px !important;
+                height: 150px !important;
+            }
+        }
+
+        @media screen and (orientation: portrait) {
+            .benefits-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Mobile optimizations */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 15px;
+            }
+            
+            .card {
+                padding: 1.5rem;
+                margin: 1rem 0;
+            }
+            
+            .section {
+                padding: 3rem 0;
+            }
+            
+            .hero img {
+                width: 250px !important;
+                height: 250px !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero img {
+                width: 200px !important;
+                height: 200px !important;
+            }
+        }
+
+        /* Touch optimizations */
+        @media (hover: none) {
+            .card:hover,
+            .benefit-card:hover {
+                transform: none;
+            }
+            
+            .card:active,
+            .benefit-card:active {
+                transform: scale(0.98);
+            }
+            
+            .hero img:active {
+                transform: scale(0.95);
+            }
+        }
+
+        /* Hover effect for hero image on devices that support it */
+        @media (hover: hover) {
+            .hero img:hover {
+                transform: scale(1.05);
+            }
+        }
+
+        /* Accessibility */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        /* Dark mode support */
+        @media (prefers-color-scheme: dark) {
+            .card {
+                background: rgba(44, 24, 16, 0.95);
+                color: var(--text-light);
+            }
+            
+            .benefit-card {
+                background: linear-gradient(135deg, #2C1810 0%, #3D2817 100%);
+                color: var(--text-light);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <img src="https://i.ibb.co/7tVNPqdw/7-hongo1.png" 
+                     alt="Ganoderma Lucidum - Hongo de la Inmortalidad" 
+                     style="width: 300px; height: 300px; object-fit: cover; border-radius: 50%; margin-bottom: 2rem; border: 6px solid rgba(255,255,255,0.4); box-shadow: 0 15px 40px rgba(0,0,0,0.4); transition: transform 0.3s ease;">
+                <h1>Ganoderma Lucidum</h1>
+                <p class="subtitle">El Hongo de la Inmortalidad - Reishi</p>
+                <p style="color: var(--text-light); opacity: 0.8; margin-top: 1rem;">
+                    Descubre los beneficios científicamente comprobados del "Rey de las Hierbas"
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ¿Qué es Ganoderma Lucidum? -->
+    <section class="section">
+        <div class="container">
+            <div class="section-content">
+                <h2>¿Qué es el Ganoderma Lucidum?</h2>
+                
+                <div class="card">
+                    <img src="https://i.ibb.co/1VGgYv1/8-hongo2.png" 
+                         alt="Ganoderma Lucidum - Hongo de la Inmortalidad" 
+                         style="width: 100%; height: 250px; object-fit: cover; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1);">
+                    
+                    <p><strong>Ganoderma lucidum</strong>, conocido como <em>"Reishi"</em> en Japón (que significa "potencia espiritual"), <em>"Lingzhi"</em> en China (que significa "hongo divino"), y <em>"Youngzhi"</em> en Corea (que significa "hongo de la inmortalidad"), es un hongo medicinal que ha sido utilizado durante más de 2,000 años en la medicina tradicional del Lejano Oriente.</p>
+                    
+                    <p style="margin-top: 1rem;">Este hongo brillante, cuyo nombre deriva del latín "lucidus" que significa "brillante", se caracteriza por su superficie barnizada y es único entre los hongos cultivados por su valor farmacéutico más que nutricional.</p>
+                    
+                    <div class="scientific-source" style="display: none;">
+                        <strong>Fuente científica:</strong> National Center for Biotechnology Information (NCBI) - "Ganoderma lucidum (Lingzhi or Reishi) - Herbal Medicine"
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Componentes Bioactivos -->
+    <section class="section">
+        <div class="container">
+            <div class="section-content">
+                <h2>Composición Científica</h2>
+                
+                <div class="card">
+                    <h3 style="margin-bottom: 1rem; color: var(--primary-color);">Más de 432 Metabolitos Secundarios</h3>
+                    
+                    <div class="benefits-grid">
+                        <div class="benefit-card">
+                            <div class="benefit-icon">🧬</div>
+                            <h4>Polisacáridos</h4>
+                            <p>Más de 200 tipos diferentes. Responsables de los efectos inmunomoduladores y antitumorales.</p>
+                        </div>
+                        
+                        <div class="benefit-card">
+                            <div class="benefit-icon">⚗️</div>
+                            <h4>Triterpenos</h4>
+                            <p>Más de 380 tipos. Proporcionan efectos hepatoprotectores, anti-inflamatorios y cardiovasculares.</p>
+                        </div>
+                        
+                        <div class="benefit-card">
+                            <div class="benefit-icon">💊</div>
+                            <h4>Ácidos Ganodéricos</h4>
+                            <p>Compuestos únicos responsables del sabor amargo y múltiples beneficios terapéuticos.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Beneficios para la Salud -->
+    <section class="section">
+        <div class="container">
+            <div class="section-content">
+                <h2>Beneficios Científicamente Comprobados</h2>
+                
+                <div class="benefits-grid">
+                    <div class="benefit-card">
+                        <div class="benefit-icon">🛡️</div>
+                        <h4>Sistema Inmunológico</h4>
+                        <p>Modula la función de las células T y mejora la respuesta inmunitaria. Estudios muestran efectos en glóbulos blancos críticos para la inmunidad.</p>
+                    </div>
+                    
+                    <div class="benefit-card">
+                        <div class="benefit-icon">❤️</div>
+                        <h4>Salud Cardiovascular</h4>
+                        <p>Propiedades antihipertensivas, reducción del colesterol y protección cardíaca mediante antioxidantes como α-tocoferol.</p>
+                    </div>
+                    
+                    <div class="benefit-card">
+                        <div class="benefit-icon">🩺</div>
+                        <h4>Control de Diabetes</h4>
+                        <p>Efectos hipoglucémicos comprobados en pacientes con diabetes tipo 2. Mejora la respuesta a la insulina.</p>
+                    </div>
+                    
+                    <div class="benefit-card">
+                        <div class="benefit-icon">🧠</div>
+                        <h4>Función Cerebral</h4>
+                        <p>Tradicionalmente usado para neurastenia, fatiga, insomnio y mejora del estado de ánimo.</p>
+                    </div>
+                    
+                    <div class="benefit-card">
+                        <div class="benefit-icon">🔬</div>
+                        <h4>Propiedades Anticancerígenas</h4>
+                        <p>Estudios in vitro muestran efectos antitumorales y citotoxicidad contra células de hepatoma.</p>
+                    </div>
+                    
+                    <div class="benefit-card">
+                        <div class="benefit-icon">🦠</div>
+                        <h4>Actividad Antiviral</h4>
+                        <p>Potencial contra virus del dengue, enterovirus 71, y evidencia preliminar contra coronavirus.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cómo Mejora la Salud -->
+    <section class="section">
+        <div class="container">
+            <div class="section-content">
+                <h2>¿Cómo Mejora la Salud?</h2>
+                
+                <div class="card">
+                    <img src="https://i.ibb.co/1VGgYv1/8-hongo2.png" 
+                         alt="Ganoderma Lucidum - Mecanismos de Acción" 
+                         style="width: 100%; height: 200px; object-fit: cover; border-radius: 15px; background: white; padding: 20px;">
+                    
+                    <h3 style="margin-bottom: 1rem; color: var(--primary-color);">Mecanismos de Acción Científicos</h3>
+                    
+                    <p><strong>1. Modulación Inmunitaria:</strong> Los polisacáridos β-glucanos estimulan macrófagos, células dendríticas y células natural killer, fortaleciendo la respuesta inmune innata y adaptativa.</p>
+                    
+                    <p><strong>2. Actividad Antioxidante:</strong> Los triterpenos neutralizan radicales libres, reduciendo el estrés oxidativo y el daño celular.</p>
+                    
+                    <p><strong>3. Hepatoprotección:</strong> Los ácidos ganodéricos protegen el hígado mediante efectos anti-inflamatorios y regenerativos.</p>
+                    
+                    <p><strong>4. Adaptógeno Natural:</strong> Ayuda al cuerpo a adaptarse al estrés físico y fisiológico, mejorando la función hepática y la circulación.</p>
+                    
+                    <p><strong>5. Microbiota Intestinal:</strong> Aumenta bacterias beneficiosas como lactobacilos y bifidobacterias, manteniendo el equilibrio de la flora intestinal.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Productos Gano Excel El Salvador -->
+    <section class="section">
+        <div class="container">
+            <div class="section-content">
+                <h2>Productos Gano Excel El Salvador</h2>
+                
+                <div class="benefits-grid">
+                    <div class="benefit-card">
+                        <img src="https://i.ibb.co/LzNbZ6PV/1-3en1.png" 
+                             alt="GanoCafé 3 en 1" 
+                             style="width: 100%; height: 150px; object-fit: contain; margin-bottom: 1rem; border-radius: 10px;">
+                        <h4>GanoCafé 3 en 1</h4>
+                        <p>Deliciosa mezcla de café premium con Ganoderma lucidum, crema no láctea y fructosa. Perfecta para comenzar el día con energía y los beneficios del hongo de la inmortalidad.</p>
+                    </div>
+                    
+                    <div class="benefit-card">
+                        <img src="https://i.ibb.co/RT2k65Vk/2-clasico.png" 
+                             alt="GanoCafé Clásico" 
+                             style="width: 100%; height: 150px; object-fit: contain; margin-bottom: 1rem; border-radius: 10px;">
+                        <h4>GanoCafé Clásico</h4>
+                        <p>Café negro puro enriquecido con extracto de Ganoderma lucidum. Para los amantes del café tradicional que buscan beneficios adicionales para su salud.</p>
+                    </div>
+                    
+                    <div class="benefit-card">
+                        <img src="https://i.ibb.co/nJ2NB0D/3-chocolate.png" 
+                             alt="Gano Chocolate" 
+                             style="width: 100%; height: 150px; object-fit: contain; margin-bottom: 1rem; border-radius: 10px;">
+                        <h4>Gano Chocolate</h4>
+                        <p>Chocolate caliente premium combinado con Ganoderma lucidum. Un placer saludable que aporta antioxidantes y el poder nutritivo del Reishi.</p>
+                    </div>
+                    
+                    <div class="benefit-card">
+                        <img src="https://i.ibb.co/VWG4zsL0/4-latte.png" 
+                             alt="Latte Rico" 
+                             style="width: 100%; height: 150px; object-fit: contain; margin-bottom: 1rem; border-radius: 10px;">
+                        <h4>Latte Rico</h4>
+                        <p>Cremoso latte con crema no láctea y Ganoderma lucidum. La combinación perfecta entre sabor suave, textura sedosa y beneficios naturales para tu bienestar.</p>
+                    </div>
+                    
+                    <div class="benefit-card">
+                        <img src="https://i.ibb.co/BKYqXZ2J/5-mocha.png" 
+                             alt="Mocha Rico" 
+                             style="width: 100%; height: 150px; object-fit: contain; margin-bottom: 1rem; border-radius: 10px;">
+                        <h4>Mocha Rico</h4>
+                        <p>Exquisita fusión de café, chocolate y Ganoderma lucidum. Una bebida gourmet que combina los mejores sabores con propiedades saludables excepcionales.</p>
+                    </div>
+                    
+                    <div class="benefit-card" style="grid-column: 1 / -1; max-width: 500px; margin: 0 auto; background: white; border: 2px solid var(--accent-color); box-shadow: 0 10px 30px rgba(139, 69, 19, 0.2);">
+                        <img src="https://i.ibb.co/Z1LWZ2SS/6-logo.png" 
+                             alt="Gano Excel El Salvador" 
+                             style="width: 100%; height: 180px; object-fit: contain; margin-bottom: 1rem; background: white; padding: 20px; border-radius: 10px; box-shadow: 0 3px 15px rgba(0,0,0,0.1);">
+                        <h4 style="color: var(--primary-color);">Calidad Gano Excel</h4>
+                        <p style="color: var(--text-dark);">Todos nuestros productos están respaldados por la reconocida calidad de Gano Excel, líder mundial en productos con Ganoderma lucidum certificado y de origen controlado.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Café y Chocolate de Ganoderma -->
+    <section class="section">
+        <div class="container">
+            <div class="section-content">
+                <h2>¿Por qué el Café y Chocolate de Ganoderma son Superiores?</h2>
+                
+                <div class="benefits-grid">
+                    <div class="card">
+                        <img src="https://i.ibb.co/RT2k65Vk/2-clasico.png" 
+                             alt="Café con Ganoderma" 
+                             style="width: 100%; height: 200px; object-fit: contain; margin-bottom: 1rem; border-radius: 10px; background: rgba(255,255,255,0.5); padding: 10px;">
+                        
+                        <h3 style="color: var(--primary-color);">☕ Café de Ganoderma</h3>
+                        
+                        <p><strong>Ventajas sobre el café tradicional:</strong></p>
+                        <ul style="margin-left: 1rem; margin-top: 1rem;">
+                            <li><strong>Menor acidez:</strong> Reduce la irritación gástrica</li>
+                            <li><strong>Energía sostenida:</strong> Sin los picos y caídas del café normal</li>
+                            <li><strong>Beneficios adicionales:</strong> Propiedades adaptógenas del Reishi</li>
+                            <li><strong>Antioxidantes potenciados:</strong> Combinación de antioxidantes del café + triterpenos</li>
+                            <li><strong>Menor ansiedad:</strong> Los compuestos calmantes del Ganoderma contrarrestan la cafeína</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="card">
+                        <img src="https://i.ibb.co/nJ2NB0D/3-chocolate.png" 
+                             alt="Chocolate con Ganoderma" 
+                             style="width: 100%; height: 200px; object-fit: contain; margin-bottom: 1rem; border-radius: 10px; background: rgba(255,255,255,0.5); padding: 10px;">
+                        
+                        <h3 style="color: var(--primary-color);">🍫 Chocolate de Ganoderma</h3>
+                        
+                        <p><strong>Beneficios únicos:</strong></p>
+                        <ul style="margin-left: 1rem; margin-top: 1rem;">
+                            <li><strong>Doble antioxidante:</strong> Flavonoides del cacao + triterpenos del Ganoderma</li>
+                            <li><strong>Mejor estado de ánimo:</strong> Serotonina del chocolate + efectos calmantes del Reishi</li>
+                            <li><strong>Cardiovascular:</strong> Ambos ingredientes benefician el corazón</li>
+                            <li><strong>Menos azúcar:</strong> Las formulaciones suelen ser más saludables</li>
+                            <li><strong>Funcional:</strong> Placer gustativo + beneficios medicinales</li>
+                        </ul>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2 style="color: var(--text-light); margin-bottom: 1rem;">¿Interesado en los Productos de Ganoderma?</h2>
+            <p style="font-size: 1.2rem; margin-bottom: 2rem; opacity: 0.9;">
+                Descubre cómo incorporar los beneficios del Ganoderma lucidum en tu rutina diaria con productos de calidad premium.
+            </p>
+            
+            <a href="https://wa.me/50378504789?text=Hola%20Maestro%20Daniel%2C%20me%20interesa%20conocer%20más%20sobre%20los%20productos%20de%20Ganoderma%20lucidum%20y%20sus%20beneficios%20para%20la%20salud.%20¿Podrían%20brindarme%20más%20información%20y%20asesoría%20personalizada%3F" 
+               class="whatsapp-btn" 
+               target="_blank" 
+               rel="noopener noreferrer">
+                <span style="font-size: 1.5rem;">📱</span>
+                Contactar por WhatsApp
+            </a>
+            
+            <p style="margin-top: 2rem; font-size: 0.9rem; opacity: 0.8;">
+                +503 7850 4789 - Respuesta rápida y asesoría personalizada
+            </p>
+            
+            <div style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.3); text-align: center;">
+                <img src="https://i.ibb.co/YTFq6QgF/Foto-profesional.png" 
+                     alt="Maestro Daniel Portillo" 
+                     style="width: 120px; height: 120px; object-fit: cover; border-radius: 50%; margin-bottom: 1rem; border: 4px solid rgba(255,255,255,0.4); box-shadow: 0 10px 25px rgba(0,0,0,0.3); pointer-events: none;">
+                <p style="font-size: 1.1rem; font-weight: 600; color: var(--text-light); opacity: 0.9;">
+                    Maestro Daniel Portillo
+                </p>
+                <p style="font-size: 0.9rem; opacity: 0.7; margin-top: 0.5rem;">
+                    Consultor Autorizado Gano Excel El Salvador
+                </p>
+                <p style="font-size: 0.85rem; opacity: 0.8; margin-top: 0.5rem; font-style: italic;">
+                    WhatsApp directo para consultas personalizadas
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Optimización de rendimiento - Lazy loading para imágenes
+        if ('IntersectionObserver' in window) {
+            const imageObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        img.src = img.dataset.src;
+                        img.classList.remove('lazy');
+                        imageObserver.unobserve(img);
+                    }
+                });
+            });
+
+            document.querySelectorAll('img[data-src]').forEach(img => {
+                imageObserver.observe(img);
+            });
+        }
+
+        // Detección de orientación y ajustes
+        function handleOrientationChange() {
+            const isLandscape = window.innerHeight < window.innerWidth;
+            const isSmallScreen = window.innerHeight < 500;
+            
+            document.body.classList.toggle('landscape-mode', isLandscape && isSmallScreen);
+            
+            // Ajustar alturas dinámicamente
+            if (isLandscape && isSmallScreen) {
+                document.documentElement.style.setProperty('--vh', window.innerHeight * 0.01 + 'px');
+            } else {
+                document.documentElement.style.removeProperty('--vh');
+            }
+        }
+
+        // Eventos de orientación
+        window.addEventListener('orientationchange', () => {
+            setTimeout(handleOrientationChange, 100);
+        });
+        
+        window.addEventListener('resize', handleOrientationChange);
+        
+        // Inicializar
+        handleOrientationChange();
+
+        // Smooth scroll para navegación
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Preload crítico para Vercel
+        if ('requestIdleCallback' in window) {
+            requestIdleCallback(() => {
+                // Precargar recursos no críticos
+                const link = document.createElement('link');
+                link.rel = 'prefetch';
+                link.href = 'https://wa.me/50378504789';
+                document.head.appendChild(link);
+            });
+        }
+
+        // Touch optimizations
+        document.addEventListener('touchstart', function() {}, {passive: true});
+        document.addEventListener('touchmove', function() {}, {passive: true});
+        
+        // Protección contra copia de contenido
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+            return false;
+        });
+        
+        document.addEventListener('selectstart', function(e) {
+            e.preventDefault();
+            return false;
+        });
+        
+        document.addEventListener('dragstart', function(e) {
+            e.preventDefault();
+            return false;
+        });
+        
+        // Deshabilitar atajos de teclado para copiar
+        document.addEventListener('keydown', function(e) {
+            // Ctrl+A, Ctrl+C, Ctrl+V, Ctrl+X, Ctrl+S, Ctrl+P, F12
+            if (e.ctrlKey && (e.keyCode === 65 || e.keyCode === 67 || e.keyCode === 86 || e.keyCode === 88 || e.keyCode === 83 || e.keyCode === 80)) {
+                e.preventDefault();
+                return false;
+            }
+            // F12 (DevTools)
+            if (e.keyCode === 123) {
+                e.preventDefault();
+                return false;
+            }
+            // Ctrl+Shift+I (DevTools)
+            if (e.ctrlKey && e.shiftKey && e.keyCode === 73) {
+                e.preventDefault();
+                return false;
+            }
+            // Ctrl+U (Ver código fuente)
+            if (e.ctrlKey && e.keyCode === 85) {
+                e.preventDefault();
+                return false;
+            }
+        });
+        
+        // Performance monitoring para Vercel Analytics
+        if (window.va) {
+            // Track engagement
+            let maxScroll = 0;
+            window.addEventListener('scroll', () => {
+                const scrollPercent = Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100);
+                if (scrollPercent > maxScroll) {
+                    maxScroll = scrollPercent;
+                    if (maxScroll % 25 === 0) {
+                        window.va('track', 'scroll', { percent: maxScroll });
+                    }
+                }
+            }, {passive: true});
+            
+            // Track WhatsApp clicks
+            document.querySelector('.whatsapp-btn').addEventListener('click', () => {
+                window.va('track', 'whatsapp_click');
+            });
+        }
+    </script>
+</body>
+</html>
