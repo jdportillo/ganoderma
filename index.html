@@ -72,15 +72,6 @@
             pointer-events: none;
         }
 
-        /* Permitir interacción solo en el botón de WhatsApp */
-        .whatsapp-btn {
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
-            pointer-events: all;
-        }
-
         .container {
             max-width: 100%;
             margin: 0 auto;
@@ -226,33 +217,79 @@
             font-style: italic;
         }
 
-        .cta-section {
+        /* Nueva sección de videos */
+        .videos-section {
             background: var(--gradient-1);
             padding: 4rem 2rem;
             text-align: center;
             color: var(--text-light);
         }
 
-        .whatsapp-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 1rem;
-            background: #25D366;
-            color: white;
-            padding: 1rem 2rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1.1rem;
-            box-shadow: 0 5px 20px rgba(37, 211, 102, 0.3);
-            transition: all 0.3s ease;
-            margin-top: 2rem;
+        .videos-section h2 {
+            color: var(--text-light);
+            margin-bottom: 3rem;
+            font-size: clamp(2rem, 6vw, 3rem);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
 
-        .whatsapp-btn:hover {
-            background: #128C7E;
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4);
+        .videos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .video-container {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .video-container:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.4);
+        }
+
+        .video-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .video-wrapper {
+            position: relative;
+            width: 100%;
+            height: 0;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            margin-bottom: 1rem;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 15px;
+        }
+
+        .video-description {
+            color: var(--text-dark);
+            font-size: 0.95rem;
+            line-height: 1.5;
+            text-align: center;
+            opacity: 0.8;
         }
 
         /* Animaciones */
@@ -293,6 +330,10 @@
             .benefits-grid {
                 grid-template-columns: 1fr;
             }
+            
+            .videos-grid {
+                grid-template-columns: 1fr;
+            }
         }
 
         /* Mobile optimizations */
@@ -314,6 +355,18 @@
                 width: 250px !important;
                 height: 250px !important;
             }
+            
+            .videos-section {
+                padding: 3rem 1rem;
+            }
+            
+            .video-container {
+                padding: 1.5rem;
+            }
+            
+            .videos-grid {
+                gap: 2rem;
+            }
         }
 
         @media (max-width: 480px) {
@@ -321,17 +374,31 @@
                 width: 200px !important;
                 height: 200px !important;
             }
+            
+            .videos-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .video-container {
+                padding: 1rem;
+            }
         }
 
         /* Touch optimizations */
         @media (hover: none) {
             .card:hover,
-            .benefit-card:hover {
+            .benefit-card:hover,
+            .video-container:hover {
                 transform: none;
             }
             
             .card:active,
             .benefit-card:active {
+                transform: scale(0.98);
+            }
+            
+            .video-container:active {
                 transform: scale(0.98);
             }
             
@@ -366,6 +433,10 @@
             .benefit-card {
                 background: linear-gradient(135deg, #2C1810 0%, #3D2817 100%);
                 color: var(--text-light);
+            }
+            
+            .video-container {
+                background: rgba(44, 24, 16, 0.95);
             }
         }
     </style>
@@ -529,7 +600,7 @@
                              alt="GanoCafé 3 en 1" 
                              style="width: 100%; height: 150px; object-fit: contain; margin-bottom: 1rem; border-radius: 10px;">
                         <h4>GanoCafé 3 en 1</h4>
-                        <p>Deliciosa mezcla de café premium con Ganoderma lucidum, crema no láctea y fructosa. Perfecta para comenzar el día con energía y los beneficios del hongo de la inmortalidad.</p>
+                        <p>Deliciosa mezcla de café premium con Ganoderma lucidum, crema no láctea y azúcar de palma (arenga pinnata). Perfecta para comenzar el día con energía y los beneficios del hongo de la inmortalidad.</p>
                     </div>
                     
                     <div class="benefit-card">
@@ -644,38 +715,47 @@
         </div>
     </section>
 
-    <!-- CTA Section -->
-    <section class="cta-section">
+    <!-- Nueva Sección de Videos -->
+    <section class="videos-section">
         <div class="container">
-            <h2 style="color: var(--text-light); margin-bottom: 1rem;">¿Interesado en los Productos con Ganoderma de Gano Excel?</h2>
-            <p style="font-size: 1.2rem; margin-bottom: 2rem; opacity: 0.9;">
-                Descubre cómo incorporar los beneficios del Ganoderma lucidum en tu rutina diaria con productos de calidad premium.
-            </p>
+            <h2>📹 Videos Informativos sobre Ganoderma</h2>
             
-            <a href="https://wa.me/50378504789?text=Hola%20Master%20Daniel%2C%20me%20interesa%20conocer%20más%20sobre%20los%20productos%20con%20Ganoderma%20de%20Gano%20Excel%20y%20sus%20beneficios%20para%20la%20salud.%20¿Podrían%20brindarme%20más%20información%20y%20asesoría%20personalizada%3F" 
-               class="whatsapp-btn" 
-               target="_blank" 
-               rel="noopener noreferrer">
-                <span style="font-size: 1.5rem;">📱</span>
-                Contactar por WhatsApp
-            </a>
-            
-            <p style="margin-top: 2rem; font-size: 0.9rem; opacity: 0.8;">
-                +503 7850 4789 - Respuesta rápida y asesoría personalizada
-            </p>
+            <div class="videos-grid">
+                <div class="video-container">
+                    <h3 class="video-title">☕ Los Beneficios del Café Enriquecido con Ganoderma</h3>
+                    <div class="video-wrapper">
+                        <iframe 
+                            src="https://www.youtube.com/embed/Qoe-UnQFH2Q?rel=0&enablejsapi=1&origin=https://yourdomain.vercel.app"
+                            title="Los beneficios del café enriquecido con ganoderma"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                    <p class="video-description">
+                        Descubre cómo el café enriquecido con Ganoderma lucidum puede transformar tu rutina diaria, proporcionando no solo energía sostenida, sino también beneficios únicos para tu salud y bienestar.
+                    </p>
+                </div>
+                
+                <div class="video-container">
+                    <h3 class="video-title">🍄 Producción del Ganoderma Lucidum</h3>
+                    <div class="video-wrapper">
+                        <iframe 
+                            src="https://www.youtube.com/embed/34rXwz2AyjY?rel=0&enablejsapi=1&origin=https://yourdomain.vercel.app"
+                            title="Producción del ganoderma lucidum"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                    <p class="video-description">
+                        Conoce el fascinante proceso de cultivo y producción del Ganoderma lucidum, desde sus orígenes hasta la obtención del extracto puro que se utiliza en los productos de calidad premium.
+                    </p>
+                </div>
+            </div>
             
             <div style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.3); text-align: center;">
-                <img src="https://i.ibb.co/YTFq6QgF/Foto-profesional.png" 
-                     alt="Master Daniel Portillo" 
-                     style="width: 120px; height: 120px; object-fit: cover; border-radius: 50%; margin-bottom: 1rem; border: 4px solid rgba(255,255,255,0.4); box-shadow: 0 10px 25px rgba(0,0,0,0.3); pointer-events: none;">
-                <p style="font-size: 1.1rem; font-weight: 600; color: var(--text-light); opacity: 0.9;">
-                    Master Daniel Portillo
-                </p>
-                <p style="font-size: 0.9rem; opacity: 0.7; margin-top: 0.5rem;">
-                    Consultor Autorizado Gano Excel El Salvador
-                </p>
-                <p style="font-size: 0.85rem; opacity: 0.8; margin-top: 0.5rem; font-style: italic;">
-                    WhatsApp directo para consultas personalizadas
+                <p style="font-size: 1.1rem; opacity: 0.9; color: var(--text-light);">
+                    🎯 <strong>Aprende más sobre los beneficios del Ganoderma lucidum</strong><br>
+                    Estos videos te proporcionan información valiosa basada en investigación científica y experiencias reales.
                 </p>
             </div>
         </div>
@@ -745,7 +825,7 @@
                 // Precargar recursos no críticos
                 const link = document.createElement('link');
                 link.rel = 'prefetch';
-                link.href = 'https://wa.me/50378504789';
+                link.href = 'https://www.youtube.com';
                 document.head.appendChild(link);
             });
         }
@@ -808,10 +888,19 @@
                 }
             }, {passive: true});
             
-            // Track WhatsApp clicks
-            document.querySelector('.whatsapp-btn').addEventListener('click', () => {
-                window.va('track', 'whatsapp_click');
+            // Track video interactions
+            const videos = document.querySelectorAll('iframe');
+            videos.forEach((video, index) => {
+                video.addEventListener('load', () => {
+                    window.va('track', 'video_loaded', { video_index: index });
+                });
             });
+        }
+
+        // YouTube API for video analytics (opcional)
+        function onYouTubeIframeAPIReady() {
+            // Esta función se llamará cuando la API de YouTube esté lista
+            // Puedes agregar tracking adicional de videos aquí si lo necesitas
         }
     </script>
 </body>
