@@ -181,12 +181,52 @@
         
         /* Information Menu Section */
         .info-menu-section {
-            background: rgba(255, 255, 255, 0.95);
+            background: linear-gradient(135deg, rgba(139, 69, 19, 0.1) 0%, rgba(205, 133, 63, 0.15) 50%, rgba(222, 184, 135, 0.1) 100%),
+                        radial-gradient(circle at 20% 80%, rgba(139, 69, 19, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 20%, rgba(205, 133, 63, 0.08) 0%, transparent 50%);
             padding: 60px 0;
             margin-top: 40px;
-            border-radius: 20px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(102, 126, 234, 0.1);
+            border-radius: 25px;
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(139, 69, 19, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .info-menu-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="organic-pattern" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="1" fill="rgba(139,69,19,0.08)"/><circle cx="5" cy="5" r="0.5" fill="rgba(205,133,63,0.06)"/><circle cx="15" cy="15" r="0.8" fill="rgba(139,69,19,0.05)"/></pattern></defs><rect width="100" height="100" fill="url(%23organic-pattern)"/></svg>');
+            opacity: 0.3;
+            z-index: 1;
+        }
+        
+        .info-menu-section::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(from 0deg at 50% 50%, 
+                                      rgba(139, 69, 19, 0.03) 0deg, 
+                                      rgba(205, 133, 63, 0.02) 60deg, 
+                                      rgba(222, 184, 135, 0.02) 120deg,
+                                      rgba(139, 69, 19, 0.01) 180deg,
+                                      rgba(205, 133, 63, 0.02) 240deg,
+                                      rgba(139, 69, 19, 0.03) 360deg);
+            animation: rotate-slow 60s linear infinite;
+            z-index: 0;
+            pointer-events: none;
+        }
+        
+        .info-menu-section > * {
+            position: relative;
+            z-index: 2;
         }
         
         .info-menu-buttons {
@@ -198,7 +238,7 @@
         }
         
         .info-button {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #8B4513 0%, #CD853F 100%);
             color: white;
             border: none;
             padding: 15px 25px;
@@ -210,18 +250,18 @@
             display: inline-flex;
             align-items: center;
             gap: 10px;
-            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+            box-shadow: 0 4px 15px rgba(139, 69, 19, 0.3);
             min-width: 200px;
             justify-content: center;
         }
         
         .info-button:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+            box-shadow: 0 6px 20px rgba(139, 69, 19, 0.4);
         }
         
         .info-button.active {
-            background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+            background: linear-gradient(135deg, #CD853F 0%, #8B4513 100%);
         }
         
         .info-button.active .arrow-icon {
@@ -242,15 +282,16 @@
         }
         
         .info-card {
-            background: white;
-            border-radius: 15px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
             padding: 30px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-            border: 1px solid rgba(102, 126, 234, 0.1);
+            box-shadow: 0 10px 30px rgba(139, 69, 19, 0.2);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
         
         .info-card h3 {
-            color: #2c3e50;
+            color: #8B4513;
             font-size: 1.8rem;
             font-weight: 600;
             margin-bottom: 20px;
@@ -258,15 +299,15 @@
         }
         
         .triterpenos-info {
-            background: rgba(102, 126, 234, 0.1);
+            background: rgba(139, 69, 19, 0.1);
             border-radius: 10px;
             padding: 20px;
             margin: 20px 0;
-            border-left: 4px solid #667eea;
+            border-left: 4px solid #8B4513;
         }
         
         .triterpenos-info h4 {
-            color: #2c3e50;
+            color: #2C1810;
             margin-bottom: 15px;
             font-size: 1.2rem;
         }
@@ -278,7 +319,8 @@
         
         .triterpenos-info ul li {
             padding: 8px 0;
-            border-bottom: 1px solid rgba(102, 126, 234, 0.2);
+            border-bottom: 1px solid rgba(139, 69, 19, 0.2);
+            color: #2C1810;
         }
         
         .triterpenos-info ul li:last-child {
@@ -286,12 +328,13 @@
         }
         
         .highlight-box {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
+            background: linear-gradient(135deg, #8B4513 0%, #CD853F 100%);
+            color: #FFF8DC;
             padding: 20px;
             border-radius: 15px;
             margin-top: 25px;
             text-align: center;
+            box-shadow: 0 10px 30px rgba(139, 69, 19, 0.2);
         }
         
         .highlight-box p {
@@ -701,6 +744,11 @@
         @keyframes spin {
             to { transform: rotate(360deg); }
         }
+        
+        @keyframes rotate-slow {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
     </style>
 </head>
 <body>
@@ -789,22 +837,23 @@
                 <!-- Composición Científica -->
                 <div id="composicion" class="info-content">
                     <div class="info-card">
-                        <h3>Más de 432 Metabolitos Secundarios</h3>
+                        <h3 style="margin-bottom: 1rem; color: #667eea;">Más de 432 Metabolitos Secundarios</h3>
+                        
                         <div class="benefits-grid">
-                            <div class="benefit-card">
-                                <div class="benefit-icon">🧬</div>
+                            <div class="benefit-card" style="background: linear-gradient(135deg, #fff 0%, #f8f8f8 100%); border-radius: 15px; padding: 2rem; text-align: center; box-shadow: 0 5px 20px rgba(0,0,0,0.1); transition: all 0.3s ease;">
+                                <div class="benefit-icon" style="font-size: 3rem; margin-bottom: 1rem;">🧬</div>
                                 <h4>Polisacáridos</h4>
                                 <p>Más de 200 tipos diferentes. Responsables de los efectos inmunomoduladores y antitumorales.</p>
                             </div>
                             
-                            <div class="benefit-card">
-                                <div class="benefit-icon">⚗️</div>
+                            <div class="benefit-card" style="background: linear-gradient(135deg, #fff 0%, #f8f8f8 100%); border-radius: 15px; padding: 2rem; text-align: center; box-shadow: 0 5px 20px rgba(0,0,0,0.1); transition: all 0.3s ease;">
+                                <div class="benefit-icon" style="font-size: 3rem; margin-bottom: 1rem;">⚗️</div>
                                 <h4>Triterpenos</h4>
                                 <p>Más de 380 tipos. Proporcionan efectos hepatoprotectores, anti-inflamatorios y cardiovasculares.</p>
                             </div>
                             
-                            <div class="benefit-card">
-                                <div class="benefit-icon">💊</div>
+                            <div class="benefit-card" style="background: linear-gradient(135deg, #fff 0%, #f8f8f8 100%); border-radius: 15px; padding: 2rem; text-align: center; box-shadow: 0 5px 20px rgba(0,0,0,0.1); transition: all 0.3s ease;">
+                                <div class="benefit-icon" style="font-size: 3rem; margin-bottom: 1rem;">💊</div>
                                 <h4>Ácidos Ganodéricos</h4>
                                 <p>Compuestos únicos responsables del sabor amargo y múltiples beneficios terapéuticos.</p>
                             </div>
@@ -815,40 +864,41 @@
                 <!-- Beneficios Científicos -->
                 <div id="beneficios" class="info-content">
                     <div class="info-card">
-                        <h3>Beneficios Científicamente Comprobados</h3>
+                        <h3 style="margin-bottom: 2rem; color: #667eea;">Beneficios Científicamente Comprobados</h3>
+                        
                         <div class="benefits-grid">
-                            <div class="benefit-card">
-                                <div class="benefit-icon">🛡️</div>
+                            <div class="benefit-card" style="background: linear-gradient(135deg, #fff 0%, #f8f8f8 100%); border-radius: 15px; padding: 2rem; text-align: center; box-shadow: 0 5px 20px rgba(0,0,0,0.1); transition: all 0.3s ease;">
+                                <div class="benefit-icon" style="font-size: 3rem; margin-bottom: 1rem;">🛡️</div>
                                 <h4>Sistema Inmunológico</h4>
                                 <p>Modula la función de las células T y mejora la respuesta inmunitaria. Estudios muestran efectos en glóbulos blancos críticos para la inmunidad.</p>
                             </div>
                             
-                            <div class="benefit-card">
-                                <div class="benefit-icon">❤️</div>
+                            <div class="benefit-card" style="background: linear-gradient(135deg, #fff 0%, #f8f8f8 100%); border-radius: 15px; padding: 2rem; text-align: center; box-shadow: 0 5px 20px rgba(0,0,0,0.1); transition: all 0.3s ease;">
+                                <div class="benefit-icon" style="font-size: 3rem; margin-bottom: 1rem;">❤️</div>
                                 <h4>Salud Cardiovascular</h4>
                                 <p>Propiedades antihipertensivas, reducción del colesterol y protección cardíaca mediante antioxidantes como α-tocoferol.</p>
                             </div>
                             
-                            <div class="benefit-card">
-                                <div class="benefit-icon">🩺</div>
+                            <div class="benefit-card" style="background: linear-gradient(135deg, #fff 0%, #f8f8f8 100%); border-radius: 15px; padding: 2rem; text-align: center; box-shadow: 0 5px 20px rgba(0,0,0,0.1); transition: all 0.3s ease;">
+                                <div class="benefit-icon" style="font-size: 3rem; margin-bottom: 1rem;">🩺</div>
                                 <h4>Control de Diabetes</h4>
                                 <p>Efectos hipoglucémicos comprobados en pacientes con diabetes tipo 2. Mejora la respuesta a la insulina.</p>
                             </div>
                             
-                            <div class="benefit-card">
-                                <div class="benefit-icon">🧠</div>
+                            <div class="benefit-card" style="background: linear-gradient(135deg, #fff 0%, #f8f8f8 100%); border-radius: 15px; padding: 2rem; text-align: center; box-shadow: 0 5px 20px rgba(0,0,0,0.1); transition: all 0.3s ease;">
+                                <div class="benefit-icon" style="font-size: 3rem; margin-bottom: 1rem;">🧠</div>
                                 <h4>Función Cerebral</h4>
                                 <p>Tradicionalmente usado para neurastenia, fatiga, insomnio y mejora del estado de ánimo.</p>
                             </div>
                             
-                            <div class="benefit-card">
-                                <div class="benefit-icon">🔬</div>
+                            <div class="benefit-card" style="background: linear-gradient(135deg, #fff 0%, #f8f8f8 100%); border-radius: 15px; padding: 2rem; text-align: center; box-shadow: 0 5px 20px rgba(0,0,0,0.1); transition: all 0.3s ease;">
+                                <div class="benefit-icon" style="font-size: 3rem; margin-bottom: 1rem;">🔬</div>
                                 <h4>Propiedades Anticancerígenas</h4>
                                 <p>Estudios in vitro muestran efectos antitumorales y citotoxicidad contra células de hepatoma.</p>
                             </div>
                             
-                            <div class="benefit-card">
-                                <div class="benefit-icon">🦠</div>
+                            <div class="benefit-card" style="background: linear-gradient(135deg, #fff 0%, #f8f8f8 100%); border-radius: 15px; padding: 2rem; text-align: center; box-shadow: 0 5px 20px rgba(0,0,0,0.1); transition: all 0.3s ease;">
+                                <div class="benefit-icon" style="font-size: 3rem; margin-bottom: 1rem;">🦠</div>
                                 <h4>Actividad Antiviral</h4>
                                 <p>Potencial contra virus del dengue, enterovirus 71, y evidencia preliminar contra coronavirus.</p>
                             </div>
@@ -858,13 +908,14 @@
                 
                 <!-- Triterpenos -->
                 <div id="triterpenos" class="info-content">
-                    <div class="info-card">
-                        <h3>¿Qué son los Triterpenos?</h3>
-                        <p><strong>Los triterpenos son compuestos bioactivos únicos</strong> que se encuentran en concentraciones excepcionales en el Ganoderma lucidum de Gano Excel. Estos compuestos son responsables de las principales actividades biológicas del hongo.</p>
+                    <div class="info-card" style="background: rgba(255, 255, 255, 0.95); border-radius: 20px; padding: 2rem; box-shadow: 0 10px 30px rgba(139, 69, 19, 0.2); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.2);">
+                        <h3 style="color: #8B4513; margin-bottom: 1rem; text-align: center;">🧬 ¿Qué son los Triterpenos?</h3>
                         
-                        <div class="triterpenos-info">
-                            <h4>Actividades Biológicas de los Triterpenos:</h4>
-                            <ul>
+                        <p><strong>Los triterpenos son compuestos bioactivos únicos</strong> que se encuentran en concentraciones excepcionales en el Ganoderma lucidum de Gano Excel. Estos compuestos son responsables de las principales actividades biológicas:</p>
+                        
+                        <div style="margin: 1rem 0; padding: 1rem; background: rgba(139, 69, 19, 0.1); border-radius: 10px; border-left: 4px solid #8B4513;">
+                            <p><strong>🔬 Actividades Biológicas de los Triterpenos:</strong></p>
+                            <ul style="margin-left: 1rem; margin-top: 0.5rem;">
                                 <li><strong>Anticancerígenas:</strong> Inhiben el crecimiento de células tumorales</li>
                                 <li><strong>Antiinflamatorias:</strong> Reducen la inflamación crónica</li>
                                 <li><strong>Hepatoprotectoras:</strong> Protegen y regeneran el hígado</li>
@@ -874,9 +925,9 @@
                             </ul>
                         </div>
                         
-                        <div class="highlight-box">
-                            <p><strong>⭐ Esto es lo que hace que el Ganoderma de Gano Excel sea único y superior en el mercado mundial.</strong></p>
-                        </div>
+                        <p style="font-weight: 600; color: #8B4513; text-align: center; margin-top: 1rem;">
+                            ⭐ Esto es lo que hace que el Ganoderma de Gano Excel sea único y superior en el mercado mundial.
+                        </p>
                     </div>
                 </div>
             </div>
